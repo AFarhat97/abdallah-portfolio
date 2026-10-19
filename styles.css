@@ -596,3 +596,22 @@ a:focus-visible,button:focus-visible{outline:3px solid #ad692e;outline-offset:4p
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
+
+/* Accessibility refinements — keep the existing Palestinian palette, but increase
+   text contrast to meet WCAG AA (4.5:1 ordinary text, 3:1 large headings). */
+.brand-trailing{color:#536048}
+.hero-number span{color:#566459}
+.hero-bottomline{color:#536154}
+.gallery-top{color:#455b48}
+.gallery-description span{color:#93412c}
+.gallery-count span{color:#455b48}
+.case-features li>span{color:#526151}
+.case-kicker>span:last-child{color:#526151}
+.about-visual h2 span{color:#5e6e54}
+.learning-path small{color:#526257}
+.skills-section .section-meta{color:#505f53}
+.skills-section .section-meta>span:first-child,.skill-number{color:#93412c}
+.skills-head p{color:#4b5f4c}
+.skill-column-head p,.learning-mark{color:#4a594c}
+.learning-mark{border-color:#728873}
+.skills-foot{color:#4b5f4c}
