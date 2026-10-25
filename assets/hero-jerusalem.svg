@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 570" role="img" aria-label="Stylized skyline inspired by Jerusalem">
+ <defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e3d6b7"/><stop offset="1" stop-color="#827c66"/></linearGradient>
+ <linearGradient id="buildings" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#8d816b"/><stop offset="1" stop-color="#3e453b"/></linearGradient>
+ <pattern id="windows" width="43" height="43" patternUnits="userSpaceOnUse"><rect x="13" y="10" width="7" height="12" rx="3" fill="#27332d" opacity=".5"/><rect x="34" y="28" width="5" height="8" rx="2" fill="#27332d" opacity=".45"/></pattern>
+ </defs>
+ 
+ <path d="M0 230 110 205 230 245 350 175 450 218 580 188 680 225 820 173 1000 215V570H0Z" fill="#a6a18b" opacity=".52"/>
+ <path d="M0 330 70 287h85v-63l25-38 25 38v48h45v-75h32v-43h30v43h24v78h72v-47h32v-51h28v51h69v-69h25v-43h24v43h19v67h70v-69h32v-66h30v66h33v49h43v-80h31v-63h28v63h31v80h93v-30h45v320H0Z" fill="url(#buildings)"/>
+ <path d="M0 367 78 338h72v-35h80v24h62v-41h96v27h77v-25h75v39h104v-30h95v35h94v-37h96v39h71v236H0Z" fill="#535b4c"/>
+ <g fill="#303d36" opacity=".62"><rect x="69" y="319" width="24" height="32"/><rect x="133" y="321" width="13" height="36"/><rect x="252" y="297" width="16" height="54"/><rect x="351" y="283" width="24" height="55"/><rect x="496" y="288" width="16" height="49"/><rect x="568" y="271" width="21" height="45"/><rect x="873" y="299" width="14" height="49"/></g>
+ <g transform="translate(600 170)"><rect x="40" y="194" width="244" height="160" fill="#827765"/><path d="M33 191q22-101 128-115 105 13 129 115Z" fill="#ae955c"/><path d="M33 191q22-101 128-115 105 13 129 115" fill="none" stroke="#695d45" stroke-width="7"/><rect x="140" y="62" width="40" height="31" fill="#827765"/><circle cx="161" cy="40" r="4" fill="#827765"/><path d="M161 60V24" stroke="#827765" stroke-width="6"/><rect x="27" y="189" width="270" height="19" fill="#ccc2a3"/><rect x="40" y="208" width="244" height="160" fill="url(#windows)"/><path d="M41 228h242" stroke="#d7c5a5" stroke-width="4"/><path d="M40 271h244" stroke="#b6a484" stroke-width="4"/></g>
+ <path d="M0 448q160-25 298 6t254 5q190-27 448-9v120H0Z" fill="#2d3c34" opacity=".7"/>
+ <g fill="#263a30" opacity=".76"><path d="M90 540v-160h12v160m-36-101q27-120 57 0m-80 43q54-112 100 0"/><path d="M392 540v-197h12v197m-25-125q22-125 48 0m-66 42q45-80 87 0"/><path d="M920 540v-170h12v170m-28-97q20-94 45 0"/></g>
+ <g stroke="#283b35" stroke-width="5" stroke-linecap="round" fill="none" opacity=".6"><path d="m115 131 10 7 10-8"/><path d="m160 115 9 5 10-7"/><path d="m820 85 10 8 10-8"/></g>
+</svg>

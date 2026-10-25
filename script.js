@@ -66,7 +66,7 @@ if ('IntersectionObserver' in window) {
     navLinks.forEach(link => {
       const active = link.getAttribute('href') === '#' + id;
       link.classList.toggle('is-current', active);
-      if (active) link.setAttribute('aria-current', 'page');
+      if (active) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });
   }, {rootMargin:'-24% 0px -45% 0px',threshold:[0,.1,.25,.5]});
