@@ -1,0 +1,140 @@
+/* =============================================================
+   Portfolio V5 · Focused viewport + typography improvements
+   Loaded LAST. Keeps all content, original photos and V5 styling.
+   Desktop: one section = one visible screen after the sticky header.
+   Small screens: preserve legible content, allow natural scrolling.
+   ============================================================= */
+:root{--v5-fit-header:77px;}
+html{scroll-padding-top:var(--v5-fit-header);}
+main>section[id]{scroll-margin-top:0;}
+
+/* Hero title: comfortably between the too-small fullscreen variant and the original large V5. */
+.hero-2026 h1{
+  font-size:clamp(47px,4.9vw,72px)!important;
+  line-height:1.08!important;
+  letter-spacing:-.052em!important;
+  margin-bottom:13px!important;
+}
+.hero-2026 .approved-role{
+  font-size:clamp(21px,1.9vw,28px)!important;
+  line-height:1.2!important;
+}
+.hero-2026__description{
+  font-size:clamp(14px,1.08vw,16px)!important;
+  line-height:1.6!important;
+  margin-block:19px 22px!important;
+}
+.hero-2026__eyebrow{margin-bottom:18px!important;}
+.hero-2026__social{margin-top:16px!important;}
+
+/* One section fits the window on common laptop and desktop sizes.
+   Fixed section height is ONLY enabled when there is enough room. */
+@media(min-width:1001px) and (min-height:700px){
+  main>section[id]{
+    box-sizing:border-box;
+    height:calc(100svh - var(--v5-fit-header))!important;
+    min-height:calc(100svh - var(--v5-fit-header))!important;
+  }
+  main>section[id]:not(#home){
+    display:flex!important;
+    align-items:center!important;
+    padding-block:clamp(12px,2.25svh,24px)!important;
+  }
+  main>section[id]:not(#home)>.container{width:min(1370px,calc(100% - 100px));}
+  .hero-2026__inner{
+    box-sizing:border-box;
+    height:100%!important;
+    min-height:0!important;
+    padding-block:12px!important;
+    align-items:center!important;
+  }
+  .hero-2026__copy{padding:0!important;}
+  .hero-2026__visual{
+    height:min(610px,calc(100svh - 125px))!important;
+    min-height:0!important;
+  }
+  /* These two sections previously extended beyond 720px laptops. */
+  #projects .projects-v2__intro{padding-block:6px 9px!important;}
+  #projects .project-v2__gallery{padding-block:10px!important;}
+  #projects .projects-v2__footer{padding-top:5px!important;}
+  #contact .contact-intro{margin-top:9px!important;}
+  #contact .contact-email{margin-top:10px!important;}
+  #contact .social-grid{margin-top:9px!important;}
+  #contact .contact-signoff{margin-top:10px!important;}
+}
+
+/* Tablet and mobile: same minimum canvas size, without clipping text.
+   The richer sections may legitimately need vertical scrolling. */
+@media(max-width:1000px){
+  :root{--v5-fit-header:71px;}
+  main>section[id]{min-height:calc(100svh - var(--v5-fit-header));}
+  .hero-2026 h1{font-size:clamp(37px,6.5vw,53px)!important;}
+  .hero-2026 .approved-role{font-size:clamp(20px,2.7vw,26px)!important;}
+  .hero-2026__inner{min-height:calc(100svh - var(--v5-fit-header))!important;}
+}
+@media(max-width:600px){
+  .hero-2026 h1{font-size:clamp(32px,8.5vw,43px)!important;}
+  .hero-2026__description{font-size:14px!important;}
+  .hero-2026__inner{min-height:0!important;}
+}
+@media(max-width:380px){
+  .hero-2026 h1{font-size:32px!important;}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important;}
+}
+
+/* Portrait tablets with enough vertical space: keep all six sections
+   within the same available panel without sacrificing font legibility. */
+@media(min-width:700px) and (max-width:900px) and (min-height:900px){
+  main>section[id]{
+    height:calc(100svh - var(--v5-fit-header))!important;
+    min-height:calc(100svh - var(--v5-fit-header))!important;
+  }
+  main>section[id]:not(#home){
+    display:flex!important;
+    align-items:center!important;
+    padding-block:14px!important;
+  }
+  main>section[id]:not(#home)>.container{
+    width:calc(100% - 48px)!important;
+    max-width:none!important;
+  }
+  .approved-section-header{padding:14px 0 18px!important;}
+  .certificates-grid{gap:10px!important;}
+  .certificate-card{min-height:260px!important;padding:14px 16px!important;}
+  .certificate-card-top{margin-bottom:7px!important;}
+  .certificate-provider{margin-bottom:6px!important;}
+  .certificate-card h3{font-size:21px!important;margin-bottom:8px!important;}
+  .certificate-description{margin-bottom:10px!important;}
+  .certificate-foot{padding-top:10px!important;}
+  .certificates-note{margin-top:10px!important;}
+  #projects .projects-v2__intro{
+    padding:7px 0 12px!important;gap:15px;
+    flex-direction:row!important;align-items:end!important;
+  }
+  #projects .projects-v2__intro h2{font-size:38px!important;}
+  #projects .projects-v2__intro-side{width:34%!important;}
+  #projects .projects-v2__project-count{font-size:24px!important;}
+  #projects .projects-v2__intro-side p{font-size:12px!important;line-height:1.4!important;}
+  #projects .project-v2{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;}
+  #projects .project-v2__gallery{padding:10px 11px!important;}
+  #projects .project-v2__copy{padding:12px 13px!important;}
+  #projects .gallery-top{padding-bottom:6px!important;}
+  #projects .gallery-slides{aspect-ratio:1.5!important;}
+  #projects .gallery-navigation{margin-top:7px!important;}
+  #projects .case-content h3{font-size:29px!important;margin:7px 0 8px!important;}
+  #projects .case-summary{font-size:12px!important;line-height:1.45!important;margin-bottom:8px!important;}
+  #projects .project-v2__facts{margin:5px 0 8px!important;}
+  #projects .project-v2__facts>div{padding:8px 6px!important;}
+  #projects .projects-v2__footer{padding-top:8px!important;}
+}
+
+/* Expanding optional project details must never conceal content beneath
+   the following section. Extra details intentionally extend the page. */
+@media(min-width:700px) and (min-height:700px){
+  #projects:has(.project-v4-details[open]){
+    height:auto!important;
+    min-height:calc(100svh - var(--v5-fit-header))!important;
+  }
+}

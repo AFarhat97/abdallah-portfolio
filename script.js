@@ -41,34 +41,27 @@ function showSlide(next) {
 document.querySelector('[data-gallery-prev]')?.addEventListener('click', () => showSlide(currentSlide - 1));
 document.querySelector('[data-gallery-next]')?.addEventListener('click', () => showSlide(currentSlide + 1));
 
-// Scroll progress and active section indicator; progressive enhancement.
-const progressBar = document.querySelector('.reading-progress');
-let framePending = false;
-function onScroll() {
-  if (framePending) return;
-  framePending = true;
-  requestAnimationFrame(() => {
-    const height = document.documentElement.scrollHeight - window.innerHeight;
-    if (progressBar) progressBar.style.width = `${height > 0 ? Math.min(100, 100 * window.scrollY / height) : 0}%`;
-    framePending = false;
-  });
-}
-window.addEventListener('scroll', onScroll, {passive: true});
-onScroll();
-
+// Active section indicator; no scroll progress indicator or scroll-linked width updates.
 if ('IntersectionObserver' in window) {
   const navLinks = [...document.querySelectorAll('.nav-link')];
   const sections = [...document.querySelectorAll('main section[id]')];
-  const activeObserver = new IntersectionObserver(entries => {
-    const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio);
-    if (!visible.length) return;
-    const id = visible[0].target.id;
+  function setCurrentSection(id) {
     navLinks.forEach(link => {
       const active = link.getAttribute('href') === '#' + id;
       link.classList.toggle('is-current', active);
       if (active) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });
+  }
+  // Direct navigation should immediately update the highlighted item.
+  navLinks.forEach(link => link.addEventListener('click', () => {
+    setCurrentSection(link.getAttribute('href').slice(1));
+  }));
+  setCurrentSection(location.hash ? location.hash.slice(1) : 'home');
+  const activeObserver = new IntersectionObserver(entries => {
+    const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio);
+    if (!visible.length) return;
+    setCurrentSection(visible[0].target.id);
   }, {rootMargin:'-24% 0px -45% 0px',threshold:[0,.1,.25,.5]});
   sections.forEach(section => activeObserver.observe(section));
 
@@ -88,4 +81,28 @@ if ('IntersectionObserver' in window) {
 // Avoid leaving a mobile popover expanded after viewport changes.
 window.matchMedia('(min-width: 781px)').addEventListener('change', event => {
   if (event.matches) closeNavigation();
+});
+
+// Accessible certificate tabs, keeps the section screen-sized on desktop.
+const certTabs = [...document.querySelectorAll('#certificates [role="tab"]')];
+function selectCertificateTab(nextTab, moveFocus = false) {
+  certTabs.forEach(tab => {
+    const active = tab === nextTab;
+    tab.setAttribute('aria-selected', String(active));
+    tab.tabIndex = active ? 0 : -1;
+    const panel = document.getElementById(tab.getAttribute('aria-controls'));
+    if (panel) panel.hidden = !active;
+  });
+  if (moveFocus) nextTab.focus();
+}
+certTabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => selectCertificateTab(tab));
+  tab.addEventListener('keydown', event => {
+    let next = -1;
+    if (event.key === 'ArrowRight') next = (index + 1) % certTabs.length;
+    if (event.key === 'ArrowLeft') next = (index - 1 + certTabs.length) % certTabs.length;
+    if (event.key === 'Home') next = 0;
+    if (event.key === 'End') next = certTabs.length - 1;
+    if (next >= 0) { event.preventDefault(); selectCertificateTab(certTabs[next], true); }
+  });
 });
